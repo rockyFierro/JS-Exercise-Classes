@@ -41,7 +41,26 @@ class Airplane {
 */
 
 class Person {
+  constructor(name, age){
+    this.name = name;
+    this.age = age;
+    this.stomach = []
+  }
 
+  eat(someFood){
+    if (this.stomach.length === 10){
+      return;
+    }
+    this.stomach.push(someFood);
+  }
+
+  poop(){
+    this.stomach.splice(0,this.stomach.length);
+  }
+  
+  toString(){
+    return `${this.name}, ${this.age}`;
+  }
 }
 
 /*
@@ -59,8 +78,30 @@ class Person {
 */
 
 class Car {
+  constructor(model, milesPerGallon){
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
+    this.tank = 0;
+    this.odometer = 0;
+  };
 
+  fill(gallons){
+    this.tank += gallons;
+  };
+
+  drive(distance){
+    if (this.tank > distance / this.milesPerGallon) {
+      //the tank has more gas than its mpg-range
+      this.odometer += distance; //the odometer goes up as it travels
+      this.tank = distance / this.milesPerGallon; //the tank uses furl at a rate = distance travelled / mpg
+    } else {
+      //the tank does not have more fuel than its minimum range
+      this.odometer += distance - 1; //magic?
+      this.tank *= 0; //this.tank / distance; //i suppose this makes logical sense in a smartass kind of way - without rounding down i can't make it work though.
+      return `I ran out of fuel at ${this.odometer} miles`; //I understood that reference.
+    }
 }
+};
 
 /*
   TASK 3
