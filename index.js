@@ -9,16 +9,16 @@
 
 // EXAMPLE SOLUTION CODE:
 class Airplane {
-  constructor(name) {
-    this.name = name;
-    this.isFlying = false;
-  }
-  takeOff() {
-    this.isFlying = true;
-  }
-  land() {
-    this.isFlying = false;
-  }
+    constructor(name) {
+        this.name = name;
+        this.isFlying = false;
+    }
+    takeOff() {
+        this.isFlying = true;
+    }
+    land() {
+        this.isFlying = false;
+    }
 }
 
 /*
@@ -41,26 +41,26 @@ class Airplane {
 */
 
 class Person {
-  constructor(name, age){
-    this.name = name;
-    this.age = age;
-    this.stomach = []
-  }
-
-  eat(someFood){
-    if (this.stomach.length === 10){
-      return;
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+        this.stomach = []
     }
-    this.stomach.push(someFood);
-  }
 
-  poop(){
-    this.stomach.splice(0,this.stomach.length);
-  }
-  
-  toString(){
-    return `${this.name}, ${this.age}`;
-  }
+    eat(someFood) {
+        if (this.stomach.length === 10) {
+            return;
+        }
+        this.stomach.push(someFood);
+    }
+
+    poop() {
+        this.stomach.splice(0, this.stomach.length);
+    }
+
+    toString() {
+        return `${this.name}, ${this.age}`;
+    }
 }
 
 /*
@@ -78,29 +78,29 @@ class Person {
 */
 
 class Car {
-  constructor(model, milesPerGallon){
-    this.model = model;
-    this.milesPerGallon = milesPerGallon;
-    this.tank = 0;
-    this.odometer = 0;
-  };
+    constructor(model, milesPerGallon) {
+        this.model = model;
+        this.milesPerGallon = milesPerGallon;
+        this.tank = 0;
+        this.odometer = 0;
+    };
 
-  fill(gallons){
-    this.tank += gallons;
-  };
+    fill(gallons) {
+        this.tank += gallons;
+    };
 
-  drive(distance){
-    if (this.tank > distance / this.milesPerGallon) {
-      //the tank has more gas than its mpg-range
-      this.odometer += distance; //the odometer goes up as it travels
-      this.tank = distance / this.milesPerGallon; //the tank uses furl at a rate = distance travelled / mpg
-    } else {
-      //the tank does not have more fuel than its minimum range
-      this.odometer += distance - 1; //magic?
-      this.tank *= 0; //this.tank / distance; //i suppose this makes logical sense in a smartass kind of way - without rounding down i can't make it work though.
-      return `I ran out of fuel at ${this.odometer} miles`; //I understood that reference.
+    drive(distance) {
+        if (this.tank > distance / this.milesPerGallon) {
+            //the tank has more gas than its mpg-range
+            this.odometer += distance; //the odometer goes up as it travels
+            this.tank = distance / this.milesPerGallon; //the tank uses furl at a rate = distance travelled / mpg
+        } else {
+            //the tank does not have more fuel than its minimum range
+            this.odometer += distance - 1; //magic?
+            this.tank *= 0; //this.tank / distance; //i suppose this makes logical sense in a smartass kind of way - without rounding down i can't make it work though.
+            return `I ran out of fuel at ${this.odometer} miles`; //I understood that reference.
+        }
     }
-}
 };
 
 /*
@@ -116,14 +116,14 @@ class Car {
         + {name} and {location} of course come from the instance's own properties.
 */
 class Lambdasian {
-  constructor(blurb){
-    this.name = blurb.name;
-    this.age = blurb.age;
-    this.location = blurb.location;
-  }
-  speak(){
-    return `Hello my name is ${this.name}, I am from ${this.location}`;
-  }
+    constructor(blurb) {
+        this.name = blurb.name;
+        this.age = blurb.age;
+        this.location = blurb.location;
+    }
+    speak() {
+        return `Hello my name is ${this.name}, I am from ${this.location}`;
+    }
 };
 
 /*
@@ -140,21 +140,21 @@ class Lambdasian {
         + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
-class Instructor extends Lambdasian{
-  constructor(blurb){
-    super(blurb);
-    this.specialty = blurb.specialty;
-    this.favLanguage = blurb.favLanguage;
-    this.catchPhrase = blurb.catchPhrase;
-  }
+class Instructor extends Lambdasian {
+    constructor(blurb) {
+        super(blurb);
+        this.specialty = blurb.specialty;
+        this.favLanguage = blurb.favLanguage;
+        this.catchPhrase = blurb.catchPhrase;
+    }
 
-  demo(subject){
-    return `Today we are learning about ${subject}`;
-  };
+    demo(subject) {
+        return `Today we are learning about ${subject}`;
+    };
 
-  grade(student,subject){
-    return `${student.name} receives a perfect score on ${subject}`;
-  };
+    grade(student, subject) {
+        return `${student.name} receives a perfect score on ${subject}`;
+    };
 }
 
 /*
@@ -172,25 +172,26 @@ class Instructor extends Lambdasian{
         + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
-class Student extends Lambdasian{
-  constructor(blurb){
-    super(blurb);
-    this.previousBackground = blurb.previousBackground;
-    this.className = blurb.className;
-    this.favSubjects = blurb.favSubjects;
-  };
+class Student extends Lambdasian {
+    constructor(blurb) {
+        super(blurb);
+        this.previousBackground = blurb.previousBackground;
+        this.className = blurb.className;
+        this.favSubjects = blurb.favSubjects;
+        this.grade = 65;
+    };
 
-  listSubjects(){
-    return `Loving ${this.favSubjects[0]},${this.favSubjects[1]},${this.favSubjects[2]}`
-  };
+    listSubjects() {
+        return `Loving ${this.favSubjects[0]},${this.favSubjects[1]},${this.favSubjects[2]}`
+    };
 
-  PRAssignment(subject){
-    return `${student.name} has submitted a PR for ${subject}`;
-  };
+    PRAssignment(subject) {
+        return `${this.name} has submitted a PR for ${subject}`;
+    };
 
-  sprintChallenge(){
-    return `${student.name} has begun sprint challenge on ${subject}`
-  };
+    sprintChallenge(subject) {
+        return `${this.name} has begun sprint challenge on ${subject}`;
+    };
 
 }
 
@@ -207,7 +208,20 @@ class Student extends Lambdasian{
         + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
-class ProjectManager {
+class ProjectManager extends Instructor {
+    constructor(blurb) {
+        super(blurb);
+        this.gradClassName = blurb.gradClassName;
+        this.favInstructor = blurb.favInstructor;
+    }
+
+    standUp(channel) {
+        return `${this.name} announces to ${channel} @channel standy times!`;
+    }
+
+    debugsCode(student, subject) {
+        return `${this.name} debugs ${student.name}'s code on ${subject}`;
+    }
 
 }
 
@@ -224,12 +238,12 @@ class ProjectManager {
 ///////// END OF CHALLENGE /////////
 ///////// END OF CHALLENGE /////////
 if (typeof exports !== 'undefined') {
-  module.exports = module.exports || {}
-  if (Airplane) { module.exports.Airplane = Airplane }
-  if (Person) { module.exports.Person = Person }
-  if (Car) { module.exports.Car = Car }
-  if (Lambdasian) { module.exports.Lambdasian = Lambdasian }
-  if (Instructor) { module.exports.Instructor = Instructor }
-  if (Student) { module.exports.Student = Student }
-  if (ProjectManager) { module.exports.ProjectManager = ProjectManager }
+    module.exports = module.exports || {}
+    if (Airplane) { module.exports.Airplane = Airplane }
+    if (Person) { module.exports.Person = Person }
+    if (Car) { module.exports.Car = Car }
+    if (Lambdasian) { module.exports.Lambdasian = Lambdasian }
+    if (Instructor) { module.exports.Instructor = Instructor }
+    if (Student) { module.exports.Student = Student }
+    if (ProjectManager) { module.exports.ProjectManager = ProjectManager }
 }
